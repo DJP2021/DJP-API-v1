@@ -36,7 +36,7 @@ def hello(apikey = None, prompt = None):
             status = 0
             return {"status": status, "error": "Invalid Key"}
 
-@app.get("/service/createuser")
+@app.get("/service/suspend")
 def hello(userid = None, access = None):
     if access == None:
         status = 0
@@ -69,7 +69,7 @@ def balance(apikey = None):
         status = 0
         return {"status": status, "error": "Invalid Key"}
     
-@app.get("/service/getuser")
+@app.get("/service/suspenduser")
 def userinfo(userid = None, access = None):
     if access == None:
         status = 0
@@ -89,21 +89,10 @@ def userinfo(userid = None, access = None):
     if rank == 0:
         status = 0
         return {"status": status, "error": "Invalid User"}
-    key = djp.get_user_key(str(userid))
-    balance = djp.get_key_balance(key)
-    number = djp.get_user_number(str(userid))
-    notes = djp.get_user_notes(str(userid))
-    date = djp.get_creation_date(str(userid))
+    djp.set_user_rank(str(userid), "Blocked")
     status = 1
     return {
   "status": status,
-  "userid": userid,
-  "createdon": date,
-  "rank": rank,
-  "key": key,
-  "balance": balance,
-  "number": number,
-  "notes": notes
 }
     
 @app.get("/v1/number/rent")
