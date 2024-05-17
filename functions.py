@@ -81,7 +81,7 @@ def set_user_rank(userid, rank):
         userranks = json.load(f)
     if userid in userranks:
         userranks[userid] = rank
-        with open('data/registered_users.json', 'r') as f:
+        with open('data/registered_users.json', 'w') as f:
             userranks = json.dump(userranks, f)
         return 1
     else:
