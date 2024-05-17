@@ -207,8 +207,8 @@ def setrank(userid = None, access = None, rank = None):
     if userid == None:
         status = 0
         return {"status": status, "error": "No User given"}
-    rank = djp.get_user_rank(str(userid))
-    if rank == 0:
+    rankcheck = djp.get_user_rank(str(userid))
+    if rankcheck == 0:
         status = 0
         return {"status": status, "error": "Invalid User"}
     djp.set_user_rank(str(userid), str(rank))
