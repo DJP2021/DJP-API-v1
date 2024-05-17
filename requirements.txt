@@ -1,6 +1,5 @@
 fastapi[all]
 openai
 requests
-random
 string
 datetime
