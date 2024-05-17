@@ -76,6 +76,17 @@ def get_user_rank(userid):
     else:
         return 0
 
+def set_user_rank(userid, rank):
+    with open('data/registered_users.json', 'r') as f:
+        userranks = json.load(f)
+    if userid in userranks:
+        userranks[userid] = rank
+        with open('data/registered_users.json', 'r') as f:
+            userranks = json.dump(userranks, f)
+        return 1
+    else:
+        return 0
+
 def get_creation_date(userid):
     with open('data/creation_dates.json', 'r') as f:
         dates = json.load(f)
