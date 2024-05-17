@@ -193,7 +193,7 @@ def setrank(userid = None, access = None, rank = None):
     if access == None:
         status = 0
         return {"status": status, "error": "You have no permission to access this information"}
-    elif rank = None:
+    elif rank == None:
         status = 0
         return {"status": status, "error": "No User given"}
     else:
