@@ -19,7 +19,7 @@ def check_balance(key, costs):
         balance_keys = json.load(f)
         balance = balance_keys[key]
         if balance >= costs:
-            newbalance = round(balance - costs, 2)
+            newbalance = round(balance - costs, 1)
             balance_keys[key] = newbalance
             with open('data/valid_keys.json', 'w') as f:
                 balance_keys = json.dump(balance_keys, f)
