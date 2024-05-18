@@ -19,7 +19,7 @@ def hello(apikey = None, prompt = None):
             validation = djp.check_permission(apikey, 1)
             if validation != -1:
                 if validation != 0:
-                    validation = djp.check_balance(apikey, 0.1)
+                    validation = djp.check_balance(apikey, 0.01)
                     if validation == 1:
                         status = 1
                         response = djp.openai_request(prompt)
@@ -142,7 +142,7 @@ def number_request(apikey = None):
             validation = djp.check_permission(apikey, 2)
             if validation != -1:
                 if validation != 0:
-                    validation = djp.check_balance(apikey, 2.5)
+                    validation = djp.check_balance(apikey, 2)
                     if validation == 1:
                         status = 1
                         number = djp.rent_number(apikey)
