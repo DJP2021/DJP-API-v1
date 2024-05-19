@@ -217,3 +217,34 @@ def setrank(userid = None, access = None, rank = None):
   "status": status,
   "rank": rank,
 }
+
+@app.get("/service/setkey")
+def setrank(key = None, access = None, amount = None):
+    if access == None:
+        status = 0
+        return {"status": status, "error": "You have no permission to access this information"}
+    amount key == None:
+        status = 0
+        return {"status": status, "error": "No Amount given"}
+    else:
+        permission = djp.validate_access(access, 5)
+        if permission == -1:
+            status = 0
+            return {"status": status, "error": "Invalid Access Key"}
+        elif permission == 0:
+            status = 0
+            return {"status": status, "error": "Insufficient Permission Level"}
+    if key == None:
+        status = 0
+        return {"status": status, "error": "No Key given"}
+    keycheck = djp.validate_key(str(key))
+    if keycheck == 0:
+        status = 0
+        return {"status": status, "error": "Invalid Key"}
+    djp.set_key_balance(str(key), int(amount))
+    status = 1
+    return {
+  "status": status,
+  "key": key,
+  "amount": amount,
+}
