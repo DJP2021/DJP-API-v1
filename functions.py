@@ -87,6 +87,17 @@ def set_user_rank(userid, rank):
     else:
         return 0
 
+def set_key_balance(key, amount):
+    with open('data/valid_keys.json.json', 'r') as f:
+        balances = json.load(f)
+    if key in balances:
+        balances[key] = amount
+        with open('data/valid_keys.json', 'w') as f:
+            balances = json.dump(balances, f)
+        return 1
+    else:
+        return 0
+
 def get_creation_date(userid):
     with open('data/creation_dates.json', 'r') as f:
         dates = json.load(f)
