@@ -223,7 +223,7 @@ def setrank(key = None, access = None, amount = None):
     if access == None:
         status = 0
         return {"status": status, "error": "You have no permission to access this information"}
-    amount key == None:
+    if key == None:
         status = 0
         return {"status": status, "error": "No Amount given"}
     else:
