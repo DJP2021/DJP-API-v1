@@ -33,7 +33,7 @@ def register_user(userid):
     with open('data/valid_keys.json', 'r') as f:
         balance_keys = json.load(f)
     with open('data/valid_keys.json', 'w') as f:
-        balance_keys[key] = 1
+        balance_keys[key] = 3
         balance_keys = json.dump(balance_keys, f)
     with open('data/registered_users.json', 'r') as f:
         userranks = json.load(f)
@@ -159,7 +159,7 @@ def rent_number(key):
     userid = get_key_user(key)
     check_balance(key, 2.5)
     country_id = 123
-    application_id = 162
+    application_id = 3
     url = f'https://api.sms-man.com/control/get-number?token={sms_man_token}&country_id={country_id}&application_id={application_id}'
     response = requests.get(url)
     data = response.json()
